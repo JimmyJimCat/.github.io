@@ -32,12 +32,31 @@
     .header {
       background: linear-gradient(135deg, #4f46e5, #7c3aed);
       color: white;
-      padding: 50px 40px;
+      padding: 40px 40px 30px;
       text-align: center;
+      position: relative;
+    }
+
+    .lang-switch {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lang-switch:hover {
+      background: rgba(255,255,255,0.3);
     }
 
     .header h1 {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       margin-bottom: 8px;
       font-weight: 700;
     }
@@ -108,9 +127,16 @@
       border-top: 1px solid #eee;
     }
 
+    /* 語言內容控制 */
+    .lang-zh { display: block; }
+    .lang-en { display: none; }
+
+    body.en .lang-zh { display: none; }
+    body.en .lang-en { display: block; }
+
     @media (max-width: 600px) {
       .header {
-        padding: 40px 25px;
+        padding: 50px 25px 30px;
       }
       .content {
         padding: 30px 25px;
@@ -123,44 +149,84 @@
 </head>
 <body>
   <div class="container">
-    <!-- 頂部介紹 -->
+    <!-- 頂部 -->
     <div class="header">
-      <h1>你好，我是小明</h1>
-      <p>喜歡學習新事物・探索科技・分享生活</p>
+      <button class="lang-switch" onclick="toggleLang()">English</button>
+
+      <h1>
+        <span class="lang-zh">你好，我是小明</span>
+        <span class="lang-en">Hi, I'm Ming</span>
+      </h1>
+      <p>
+        <span class="lang-zh">喜歡學習新事物・探索科技・分享生活</span>
+        <span class="lang-en">Love learning ・ Exploring tech ・ Sharing life</span>
+      </p>
     </div>
 
     <div class="content">
       <!-- 關於我 -->
       <div class="section">
-        <h2>關於我</h2>
-        <p>
+        <h2>
+          <span class="lang-zh">關於我</span>
+          <span class="lang-en">About Me</span>
+        </h2>
+        <p class="lang-zh">
           我係一個對科技同創作有興趣嘅人。最近開始學習用 GitHub Pages 整自己嘅網站，希望透過呢個平台記錄學習過程同分享一啲有趣嘅發現。
+        </p>
+        <p class="lang-en">
+          I'm someone interested in technology and creation. Recently I started learning to build my own website with GitHub Pages, hoping to document my learning journey and share interesting discoveries.
         </p>
       </div>
 
       <!-- 興趣 -->
       <div class="section">
-        <h2>興趣同專長</h2>
-        <p>
+        <h2>
+          <span class="lang-zh">興趣同專長</span>
+          <span class="lang-en">Interests & Skills</span>
+        </h2>
+        <p class="lang-zh">
           閱讀、旅行、學新工具、整理筆記、嘗試各種線上工具。目前正努力學習數碼技能，希望持續進步。
+        </p>
+        <p class="lang-en">
+          Reading, traveling, learning new tools, organizing notes, and trying various online tools. Currently working on digital skills and aiming for continuous improvement.
         </p>
       </div>
 
-      <!-- 按鈕區 -->
+      <!-- 按鈕 -->
       <div class="section">
-        <h2>聯絡同連結</h2>
+        <h2>
+          <span class="lang-zh">聯絡同連結</span>
+          <span class="lang-en">Contact & Links</span>
+        </h2>
         <div class="buttons">
-          <a href="mailto:your.email@example.com" class="btn">電郵聯絡</a>
-          <a href="https://github.com/你的用戶名" class="btn secondary" target="_blank">我的 GitHub</a>
-          <!-- 你可以再加多啲按鈕，例如： -->
-          <!-- <a href="https://instagram.com/你的帳號" class="btn secondary" target="_blank">Instagram</a> -->
+          <a href="mailto:your.email@example.com" class="btn">
+            <span class="lang-zh">電郵聯絡</span>
+            <span class="lang-en">Email Me</span>
+          </a>
+          <a href="https://github.com/你的用戶名" class="btn secondary" target="_blank">
+            <span class="lang-zh">我的 GitHub</span>
+            <span class="lang-en">My GitHub</span>
+          </a>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      © 2026 用 GitHub Pages 製作
+      <span class="lang-zh">© 2026 用 GitHub Pages 製作</span>
+      <span class="lang-en">© 2026 Built with GitHub Pages</span>
     </div>
   </div>
+
+  <script>
+    function toggleLang() {
+      document.body.classList.toggle('en');
+      const btn = document.querySelector('.lang-switch');
+      if (document.body.classList.contains('en')) {
+        btn.textContent = '中文';
+      } else {
+        btn.textContent = 'English';
+      }
+    }
+  </script>
 </body>
 </html>
