@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的個人網站</title>
+  <title>黑貓整蠱日常</title>
+  <!-- 可愛黑貓 favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐈‍⬛</text></svg>">
   <style>
     * {
       margin: 0;
@@ -13,26 +15,26 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       color: #333;
       line-height: 1.6;
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 30px 16px;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      background: #fffaf5;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       overflow: hidden;
     }
 
     .header {
-      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      background: linear-gradient(135deg, #2d1b4e, #1a1a2e);
       color: white;
-      padding: 40px 40px 30px;
+      padding: 45px 30px 35px;
       text-align: center;
       position: relative;
     }
@@ -41,50 +43,68 @@
       position: absolute;
       top: 16px;
       right: 16px;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
       color: white;
       padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: background 0.2s;
     }
 
     .lang-switch:hover {
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.25);
+    }
+
+    .cat-icon {
+      font-size: 4.5rem;
+      margin-bottom: 10px;
+      display: block;
     }
 
     .header h1 {
-      font-size: 2.1rem;
+      font-size: 1.9rem;
       margin-bottom: 8px;
       font-weight: 700;
     }
 
     .header p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       opacity: 0.9;
     }
 
     .content {
-      padding: 40px;
+      padding: 35px 30px;
     }
 
     .section {
-      margin-bottom: 35px;
+      margin-bottom: 32px;
     }
 
     .section h2 {
-      font-size: 1.3rem;
-      color: #4f46e5;
+      font-size: 1.25rem;
+      color: #5b21b6;
       margin-bottom: 12px;
-      border-bottom: 2px solid #e0e7ff;
-      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .section p {
+    .section p, .section li {
       font-size: 1.05rem;
-      color: #555;
+      color: #444;
+    }
+
+    .prank-card {
+      background: #fdf4ff;
+      border-left: 5px solid #c084fc;
+      padding: 16px 18px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .prank-card strong {
+      color: #7c3aed;
     }
 
     .buttons {
@@ -96,38 +116,39 @@
 
     .btn {
       display: inline-block;
-      padding: 12px 24px;
-      background: #4f46e5;
+      padding: 12px 22px;
+      background: #7c3aed;
       color: white;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 50px;
       font-weight: 500;
       transition: all 0.2s ease;
     }
 
     .btn:hover {
-      background: #4338ca;
+      background: #6d28d9;
       transform: translateY(-2px);
     }
 
     .btn.secondary {
-      background: #f3f4f6;
-      color: #4f46e5;
+      background: #f3e8ff;
+      color: #6d28d9;
     }
 
     .btn.secondary:hover {
-      background: #e5e7eb;
+      background: #e9d5ff;
     }
 
     .footer {
       text-align: center;
-      padding: 20px;
+      padding: 18px;
       color: #888;
       font-size: 0.9rem;
-      border-top: 1px solid #eee;
+      background: #faf5ff;
+      border-top: 1px solid #f3e8ff;
     }
 
-    /* 語言內容控制 */
+    /* 語言切換 */
     .lang-zh { display: block; }
     .lang-en { display: none; }
 
@@ -136,13 +157,16 @@
 
     @media (max-width: 600px) {
       .header {
-        padding: 50px 25px 30px;
+        padding: 50px 20px 30px;
       }
       .content {
-        padding: 30px 25px;
+        padding: 28px 20px;
       }
       .header h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+      }
+      .cat-icon {
+        font-size: 3.8rem;
       }
     }
   </style>
@@ -152,68 +176,105 @@
     <!-- 頂部 -->
     <div class="header">
       <button class="lang-switch" onclick="toggleLang()">English</button>
-
+      
+      <span class="cat-icon">🐈‍⬛</span>
+      
       <h1>
-        <span class="lang-zh">你好，我是小明</span>
-        <span class="lang-en">Hi, I'm Ming</span>
+        <span class="lang-zh">黑貓整蠱日常</span>
+        <span class="lang-en">Black Cat Pranks</span>
       </h1>
       <p>
-        <span class="lang-zh">喜歡學習新事物・探索科技・分享生活</span>
-        <span class="lang-en">Love learning ・ Exploring tech ・ Sharing life</span>
+        <span class="lang-zh">用最可愛嘅方式，輕輕整蠱身邊嘅人</span>
+        <span class="lang-en">Gently pranking people in the cutest way possible</span>
       </p>
     </div>
 
     <div class="content">
-      <!-- 關於我 -->
+      <!-- 關於這個網站 -->
       <div class="section">
         <h2>
-          <span class="lang-zh">關於我</span>
-          <span class="lang-en">About Me</span>
+          <span class="lang-zh">關於呢度</span>
+          <span class="lang-en">About This Site</span>
         </h2>
         <p class="lang-zh">
-          我係一個對科技同創作有興趣嘅人。最近開始學習用 GitHub Pages 整自己嘅網站，希望透過呢個平台記錄學習過程同分享一啲有趣嘅發現。
+          呢度係一個專門分享「生活上輕輕整蠱人」嘅小天地。無惡意、無傷害，只係想大家一齊笑下。由一隻愛玩嘅黑貓主導。
         </p>
         <p class="lang-en">
-          I'm someone interested in technology and creation. Recently I started learning to build my own website with GitHub Pages, hoping to document my learning journey and share interesting discoveries.
+          This is a little corner for sharing light-hearted, harmless pranks from daily life. No malice, just laughs. Hosted by a playful black cat.
         </p>
       </div>
 
-      <!-- 興趣 -->
+      <!-- 整蠱分享 -->
       <div class="section">
         <h2>
-          <span class="lang-zh">興趣同專長</span>
-          <span class="lang-en">Interests & Skills</span>
+          <span class="lang-zh">最近嘅整蠱靈感</span>
+          <span class="lang-en">Recent Prank Ideas</span>
+        </h2>
+
+        <div class="prank-card">
+          <strong class="lang-zh">1. 偷偷換調味料位置</strong>
+          <strong class="lang-en">1. Secretly swap the seasonings</strong>
+          <p class="lang-zh">把鹽同糖對調，睇家人煮餸時嘅反應（記得之後換返）。</p>
+          <p class="lang-en">Swap the salt and sugar, then watch the reaction while cooking (remember to switch them back).</p>
+        </div>
+
+        <div class="prank-card">
+          <strong class="lang-zh">2. 手機換成寵物相</strong>
+          <strong class="lang-en">2. Change their phone wallpaper</strong>
+          <p class="lang-zh">趁佢唔注意，將鎖屏換成一張超誇張嘅黑貓表情包。</p>
+          <p class="lang-en">While they're not looking, change the lock screen to a dramatic black cat meme.</p>
+        </div>
+
+        <div class="prank-card">
+          <strong class="lang-zh">3. 假訊息但好溫柔</strong>
+          <strong class="lang-en">3. Soft fake messages</strong>
+          <p class="lang-zh">傳一句「今晚有驚喜」，結果只係請佢食平時最鍾意嘅小食。</p>
+          <p class="lang-en">Send “There’s a surprise tonight”, then just treat them to their favorite snack.</p>
+        </div>
+      </div>
+
+      <!-- 整蠱守則 -->
+      <div class="section">
+        <h2>
+          <span class="lang-zh">整蠱小守則</span>
+          <span class="lang-en">Prank Rules</span>
         </h2>
         <p class="lang-zh">
-          閱讀、旅行、學新工具、整理筆記、嘗試各種線上工具。目前正努力學習數碼技能，希望持續進步。
+          • 一定要無傷大雅<br>
+          • 對方笑得出先算成功<br>
+          • 整完要負責善後<br>
+          • 黑貓只支持溫柔嘅惡作劇
         </p>
         <p class="lang-en">
-          Reading, traveling, learning new tools, organizing notes, and trying various online tools. Currently working on digital skills and aiming for continuous improvement.
+          • Must be harmless<br>
+          • Success = they laugh<br>
+          • Always clean up after<br>
+          • This black cat only supports gentle pranks
         </p>
       </div>
 
       <!-- 按鈕 -->
       <div class="section">
         <h2>
-          <span class="lang-zh">聯絡同連結</span>
-          <span class="lang-en">Contact & Links</span>
+          <span class="lang-zh">想分享你嘅整蠱故事？</span>
+          <span class="lang-en">Want to share your prank?</span>
         </h2>
         <div class="buttons">
           <a href="mailto:your.email@example.com" class="btn">
-            <span class="lang-zh">電郵聯絡</span>
-            <span class="lang-en">Email Me</span>
+            <span class="lang-zh">投稿俾黑貓</span>
+            <span class="lang-en">Submit to the Cat</span>
           </a>
           <a href="https://github.com/你的用戶名" class="btn secondary" target="_blank">
-            <span class="lang-zh">我的 GitHub</span>
-            <span class="lang-en">My GitHub</span>
+            <span class="lang-zh">黑貓嘅 GitHub</span>
+            <span class="lang-en">Cat's GitHub</span>
           </a>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      <span class="lang-zh">© 2026 用 GitHub Pages 製作</span>
-      <span class="lang-en">© 2026 Built with GitHub Pages</span>
+      <span class="lang-zh">🐈‍⬛ 由一隻愛玩嘅黑貓用 GitHub Pages 製作</span>
+      <span class="lang-en">🐈‍⬛ Made with GitHub Pages by a playful black cat</span>
     </div>
   </div>
 
@@ -221,11 +282,7 @@
     function toggleLang() {
       document.body.classList.toggle('en');
       const btn = document.querySelector('.lang-switch');
-      if (document.body.classList.contains('en')) {
-        btn.textContent = '中文';
-      } else {
-        btn.textContent = 'English';
-      }
+      btn.textContent = document.body.classList.contains('en') ? '中文' : 'English';
     }
   </script>
 </body>
